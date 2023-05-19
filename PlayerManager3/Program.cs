@@ -135,9 +135,13 @@ namespace PlayerManager3
             Console.WriteLine("-------------\n");
 
             // Show each player in the enumerable object
-            foreach (Player p in playersToList)
+            List<Player> playerList = new List<Player>(playersToList);
+            
+            playerList.Sort((p1, p2) => p2.Score.CompareTo(p1.Score));
+
+            foreach (Player p in playerList)
             {
-                Console.WriteLine($" -> {p.Name} with a score of {p.Score}");
+                Console.WriteLine((p.Name) + " : " + (p.Score));
             }
             Console.WriteLine();
         }
