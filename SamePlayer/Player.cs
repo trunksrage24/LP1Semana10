@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace SamePlayer
 {
     /// <summary>
-    /// Player class to compare players with
+    /// Player class to compare players by name and type
     /// </summary>
     public class Player
     {
