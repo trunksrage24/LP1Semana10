@@ -4,7 +4,7 @@ namespace LootSort
     /// The Loot class should implement IComparable<Loot>
     /// and override GetHashCode() and Equals()
     /// </summary>
-    public class Loot : IComparable<Loot>
+    public class Loot : ICompare<Loot>
     {
         /// <summary>Type of loot.</summary>
         public LootType Kind { get; }

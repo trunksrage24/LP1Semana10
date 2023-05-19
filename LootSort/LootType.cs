@@ -1,12 +1,15 @@
-namespace LootSort
-{
-    /// <summary>Known loot types.</summary>
-    public enum LootType
+using System;
+using System.Collections.Generic;
+
+    namespace LootSort
     {
-        Health,
-        Ammo,
-        Shield,
-        Weapon,
-        Collectible
+        /// <summary>Known loot types.</summary>
+        public enum LootType
+        {
+            Health,
+            Ammo,
+            Shield,
+            Weapon,
+            Collectible
+        }
     }
-}

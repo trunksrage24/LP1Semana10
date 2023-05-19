@@ -8,27 +8,25 @@ namespace PlayerManager4
     /// <summary>
     /// class CompareByName to compare players by their names
     /// </summary>
-    public class CompareByName : IComparable<Player>
+    public class CompareByName : IComparer<Player>
     {
-        //bolean for ordering names
-        private bool correct_order;
+        private readonly bool ascending;
 
-        //interface to sort by ascendance
-        public CompareByName(bool correct_order)
+        public CompareByName(bool ascending)
         {
-            this.correct_order = correct_order;
+            this.ascending = ascending;
         }
 
-        //constructor to return sorted list
-        public int CompareTo(Player other)
+        public int Compare(Player x, Player y)
         {
-            if (other == null)
-                return 1;
+            //Compare players based on their names
+            int result = string.Compare(x.Name, y.Name);
 
-            if (correct_order)
-                return string.Compare(Name, other.Name);
-            else
-                return string.Compare(other.Name, Name);
+            //Reverse the result if the sorting order is descending
+            if (!ascending)
+                result *= -1;
+
+            return result;
         }
     }
 }
