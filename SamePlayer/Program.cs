@@ -20,7 +20,8 @@ namespace SamePlayer
                 new Player { Type = PlayerType.Slayer, Name = "Paulo" },
                 new Player { Type = PlayerType.Tank, Name = "Ana" }
             };
-            Console.WriteLine("Number of players in the set: " + setOfPlayers.Count);
+            Console.WriteLine("Number of players in the set: " + 
+            setOfPlayers.Count);
             foreach (Player p in setOfPlayers)
             {
                 Console.WriteLine($"{p.Name} is a {p.Type}");
