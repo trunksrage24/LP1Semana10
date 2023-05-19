@@ -4,7 +4,7 @@ namespace LootSort
     /// The Loot class should implement IComparable<Loot>
     /// and override GetHashCode() and Equals()
     /// </summary>
-    public class Loot : Icomparable<t>
+    public class Loot : IComparable<Loot>
     {
         /// <summary>Type of loot.</summary>
         public LootType Kind { get; }
@@ -36,5 +36,46 @@ namespace LootSort
         /// </returns>
         public override string ToString() =>
             $"[{Kind,15}]\t{Value:f2}\t{Description}";
-    }
+
+        /// <summary>
+        /// Compare all the loot and organize them accordingly.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Loot other)
+        {
+            if (other == null) return 1;
+            int typeComparison = string.Compare(Kind.ToString(), 
+            other.Kind.ToString(), StringComparison.Ordinal);
+
+            //Compares the type of loot
+            if (typeComparison != 0)
+                return typeComparison;
+
+            int valueComparison = Value.CompareTo(other.Value);
+            //Depending on the value comparison:
+            if (valueComparison != 0)
+                //Sort between values.
+                return -valueComparison; 
+
+            //If they are the same then sort them alphabetically.
+            return string.Compare(Description, other.Description, 
+            StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// Equals override to return overwritten type
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            //If there is no object then it will get a type.
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Loot other = (Loot)obj;
+            return Kind == other.Kind && Value == other.Value 
+            && Description == other.Description;
+        }
 }
