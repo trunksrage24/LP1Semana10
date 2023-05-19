@@ -1,4 +1,4 @@
-namespace PlayerManager2
+namespace PlayerManager3
 {
     public class Player
     {
